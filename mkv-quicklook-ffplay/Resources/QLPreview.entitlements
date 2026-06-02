@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- QL extensions are additionally constrained by the QuickLook sandbox.
+         These are the entitlements you can request. -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+
+    <!-- Allow the extension to talk to the main app via the URL scheme we registered. -->
+    <!-- No special network or file entitlements beyond the granted preview file are usually needed. -->
+
+    <!-- If using app group for shared UserDefaults (ffmpeg path): -->
+    <key>com.apple.security.application-groups</key>
+    <array>
+        <string>group.com.qbit.mkvquicklook</string>
+    </array>
+</dict>
+</plist>

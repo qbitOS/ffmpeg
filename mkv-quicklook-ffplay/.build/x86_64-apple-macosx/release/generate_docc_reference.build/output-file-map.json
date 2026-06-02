@@ -1,0 +1,25 @@
+{
+  "": {
+    "dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/generate_docc_reference.d",
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/generate_docc_reference.o",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/primary.swiftdeps"
+  },
+  "/Users/qbit/dev/mkv-quicklook-ffplay/.build/checkouts/swift-argument-parser/Tools/generate-docc-reference/Extensions/ArgumentParser+Markdown.swift": {
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/ArgumentParser+Markdown.swift.o",
+    "swiftmodule": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/ArgumentParser+Markdown~partial.swiftmodule",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/ArgumentParser+Markdown.swiftdeps",
+    "diagnostics": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/ArgumentParser+Markdown.dia"
+  },
+  "/Users/qbit/dev/mkv-quicklook-ffplay/.build/checkouts/swift-argument-parser/Tools/generate-docc-reference/Extensions/Process+SimpleAPI.swift": {
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/Process+SimpleAPI.swift.o",
+    "swiftmodule": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/Process+SimpleAPI~partial.swiftmodule",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/Process+SimpleAPI.swiftdeps",
+    "diagnostics": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/Process+SimpleAPI.dia"
+  },
+  "/Users/qbit/dev/mkv-quicklook-ffplay/.build/checkouts/swift-argument-parser/Tools/generate-docc-reference/GenerateDoccReference.swift": {
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/GenerateDoccReference.swift.o",
+    "swiftmodule": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/GenerateDoccReference~partial.swiftmodule",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/GenerateDoccReference.swiftdeps",
+    "diagnostics": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/generate_docc_reference.build/GenerateDoccReference.dia"
+  }
+}

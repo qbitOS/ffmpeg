@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- This goes into the Info.plist of the QLPreview extension target -->
+    <key>CFBundleDisplayName</key>
+    <string>MKV QuickLook Preview</string>
+    <key>NSExtension</key>
+    <dict>
+        <key>NSExtensionPointIdentifier</key>
+        <string>com.apple.quicklook.preview</string>
+        <key>NSExtensionPrincipalClass</key>
+        <string>$(PRODUCT_MODULE_NAME).PreviewViewController</string>
+        <key>QLSupportedContentTypes</key>
+        <array>
+            <!-- Core -->
+            <string>org.matroska.mkv</string>
+            <!-- You can add more containers your users care about -->
+            <string>org.webm</string>
+            <!-- <string>com.apple.quicktime-movie</string> etc if you want to override -->
+        </array>
+        <key>QLNeedsToBeRunInMainThread</key>
+        <true/>
+        <!-- Optional: give us a little more priority -->
+        <key>QLThumbnailMinimumSize</key>
+        <real>0</real>
+    </dict>
+</dict>
+</plist>

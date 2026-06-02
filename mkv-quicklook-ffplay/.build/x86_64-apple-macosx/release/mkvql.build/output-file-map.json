@@ -1,0 +1,13 @@
+{
+  "": {
+    "dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/mkvql.build/mkvql.d",
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/mkvql.build/mkvql.o",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/mkvql.build/primary.swiftdeps"
+  },
+  "/Users/qbit/dev/mkv-quicklook-ffplay/Sources/mkvql/main.swift": {
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/mkvql.build/main.swift.o",
+    "swiftmodule": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/mkvql.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/mkvql.build/main.swiftdeps",
+    "diagnostics": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/mkvql.build/main.dia"
+  }
+}

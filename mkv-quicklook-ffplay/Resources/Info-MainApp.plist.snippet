@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Add this to your main app Info.plist (or let Xcode generate + merge) -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>com.qbit.mkvql</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>mkvqlplay</string>
+            </array>
+        </dict>
+    </array>
+
+    <!-- Optional: declare we can open mkv so double-clicking mkv on us also works -->
+    <key>CFBundleDocumentTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeName</key>
+            <string>Matroska Video</string>
+            <key>CFBundleTypeRole</key>
+            <string>Viewer</string>
+            <key>LSHandlerRank</key>
+            <string>Alternate</string>
+            <key>LSItemContentTypes</key>
+            <array>
+                <string>org.matroska.mkv</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>

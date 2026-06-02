@@ -1,0 +1,13 @@
+{
+  "": {
+    "dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParserToolInfo.build/ArgumentParserToolInfo.d",
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParserToolInfo.build/ArgumentParserToolInfo.o",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParserToolInfo.build/primary.swiftdeps"
+  },
+  "/Users/qbit/dev/mkv-quicklook-ffplay/.build/checkouts/swift-argument-parser/Sources/ArgumentParserToolInfo/ToolInfo.swift": {
+    "object": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParserToolInfo.build/ToolInfo.swift.o",
+    "swiftmodule": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParserToolInfo.build/ToolInfo~partial.swiftmodule",
+    "swift-dependencies": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParserToolInfo.build/ToolInfo.swiftdeps",
+    "diagnostics": "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParserToolInfo.build/ToolInfo.dia"
+  }
+}

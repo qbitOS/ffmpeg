@@ -1,0 +1,177 @@
+name: MKVQuickLook
+options:
+  bundleIdPrefix: com.qbit
+  deploymentTarget:
+    macOS: "11.0"
+  createIntermediateGroups: true
+  defaultConfig: Release
+  groupSortPosition: top
+  indentWidth: 4
+  tabWidth: 4
+  usesTabs: false
+  xcodeVersion: "15.0"
+
+settings:
+  MARKETING_VERSION: "1.0.0"
+  CURRENT_PROJECT_VERSION: "100"
+  CODE_SIGN_IDENTITY: "-"
+  CODE_SIGN_STYLE: Automatic
+  DEVELOPMENT_TEAM: ""
+  ENABLE_HARDENED_RUNTIME: YES
+
+targets:
+  MKVQuickLook:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/App
+      - path: Sources/Shared
+    dependencies:
+      - target: MKVQuickLookQLPreview
+        embed: true
+        codeSign: false
+      - target: MKVQuickLookQLThumbnail
+        embed: true
+        codeSign: false
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.qbit.MKVQuickLook
+      PRODUCT_NAME: MKVQuickLook
+      INFOPLIST_FILE: ""
+      GENERATE_INFOPLIST_FILE: true
+      INFOPLIST_KEY_CFBundleDisplayName: "MKV QuickLook"
+      INFOPLIST_KEY_LSUIElement: true   # Agent app - no dock icon, no app switcher. Perfect for tool extension.
+      INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+      OTHER_LDFLAGS: ["-ObjC"]
+      SWIFT_VERSION: 5.9
+      MACOSX_DEPLOYMENT_TARGET: "11.0"
+      # The app is intentionally minimal / headless for background-free operation.
+    entitlements:
+      path: Resources/MKVQuickLook.entitlements
+      properties:
+        com.apple.security.app-sandbox: false   # Personal tool: unsandboxed main host for easy exec during embed/launch if needed. Extensions are still QL-sandboxed.
+        com.apple.security.application-groups:
+          - group.com.qbit.mkvquicklook
+    info:
+      path: "build/Info-MKVQuickLook.plist"  # will be generated/overwritten; we set keys via settings + script
+      properties:
+        CFBundleURLTypes:
+          - CFBundleURLName: com.qbit.mkvql
+            CFBundleURLSchemes:
+              - mkvqlplay
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Matroska Video
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes:
+              - org.matroska.mkv
+        LSMinimumSystemVersion: "11.0"
+    buildPhases:
+      - name: "Embed user ffmpeg/ffplay (for self-contained QL extensions)"
+        script: |
+          #!/bin/zsh
+          set -euo pipefail
+          SRC_DIR="${SRCROOT}/Scripts"
+          if [[ -x "${SRC_DIR}/embed-ffmpeg.sh" ]]; then
+            FFMPEG_SRC="${FFMPEG_SRC:-$(command -v ffmpeg || echo /usr/local/bin/ffmpeg)}" \
+            FFPLAY_SRC="${FFPLAY_SRC:-$(command -v ffplay || echo /usr/local/bin/ffplay)}" \
+            "${SRC_DIR}/embed-ffmpeg.sh"
+          else
+            echo "embed-ffmpeg.sh not found or not executable, skipping vendoring (extensions may fall back to system paths)"
+          fi
+        runOnlyWhenInstalling: false
+        shell: /bin/zsh
+      - name: "Update version from CLI / config if present"
+        script: |
+          # Allow the mkvql CLI or install script to stamp versions
+          if [[ -n "${MKVQL_VERSION:-}" ]]; then
+            /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${MKVQL_VERSION}" "${TARGET_BUILD_DIR}/${INFOPLIST_PATH}" || true
+          fi
+          if [[ -n "${MKVQL_BUILD:-}" ]]; then
+            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${MKVQL_BUILD}" "${TARGET_BUILD_DIR}/${INFOPLIST_PATH}" || true
+          fi
+        runOnlyWhenInstalling: false
+        shell: /bin/sh
+
+  MKVQuickLookQLPreview:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Sources/PreviewExtension
+      - path: Sources/Shared
+    dependencies:
+      - sdk: AppKit.framework
+      - sdk: AVFoundation.framework
+      - sdk: AVKit.framework
+      - sdk: QuickLookUI.framework
+      - sdk: UniformTypeIdentifiers.framework
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.qbit.MKVQuickLook.QLPreview
+      PRODUCT_NAME: MKVQuickLookQLPreview
+      GENERATE_INFOPLIST_FILE: true
+      INFOPLIST_KEY_CFBundleDisplayName: "MKV QuickLook Preview"
+      INFOPLIST_KEY_NSHumanReadableCopyright: "Copyright © qbit. All rights reserved."
+      SWIFT_VERSION: 5.9
+      MACOSX_DEPLOYMENT_TARGET: "11.0"
+      SKIP_INSTALL: YES
+    entitlements:
+      path: Resources/QLPreview.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups:
+          - group.com.qbit.mkvquicklook
+    info:
+      path: "build/Info-QLPreview.plist"
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.quicklook.preview
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).PreviewViewController
+          QLSupportedContentTypes:
+            - org.matroska.mkv
+            - org.webm
+          QLNeedsToBeRunInMainThread: true
+
+  MKVQuickLookQLThumbnail:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: Sources/ThumbnailExtension
+      - path: Sources/Shared
+    dependencies:
+      - sdk: AppKit.framework
+      - sdk: QuickLookThumbnailing.framework
+      - sdk: UniformTypeIdentifiers.framework
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.qbit.MKVQuickLook.QLThumbnail
+      PRODUCT_NAME: MKVQuickLookQLThumbnail
+      GENERATE_INFOPLIST_FILE: true
+      INFOPLIST_KEY_CFBundleDisplayName: "MKV QuickLook Thumbnail"
+      SWIFT_VERSION: 5.9
+      MACOSX_DEPLOYMENT_TARGET: "11.0"
+      SKIP_INSTALL: YES
+    entitlements:
+      path: Resources/QLThumbnail.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.application-groups:
+          - group.com.qbit.mkvquicklook
+    info:
+      path: "build/Info-QLThumbnail.plist"
+      properties:
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.quicklook.thumbnail
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ThumbnailProvider
+          QLSupportedContentTypes:
+            - org.matroska.mkv
+            - org.webm
+
+schemes:
+  MKVQuickLook:
+    build:
+      targets:
+        MKVQuickLook: all
+    run:
+      config: Release
+    archive:
+      config: Release
+      customArchiveName: MKVQuickLook
+      revealArchiveInOrganizer: true

@@ -1,0 +1,11 @@
+#!/bin/zsh
+# Thin wrapper: builds (if needed) and runs the mkvql SwiftPM tool from the checkout.
+# After first `mkvql install --install-cli`, you can use the globally installed one.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+if [[ ! -x ".build/release/mkvql" ]]; then
+  echo "Building mkvql CLI (one-time)..."
+  swift build -c release --package-path . 1>&2
+fi
+exec ".build/release/mkvql" "$@"

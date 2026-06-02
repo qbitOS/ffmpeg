@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- This goes into the Info.plist of the QLThumbnail extension target -->
+    <key>CFBundleDisplayName</key>
+    <string>MKV QuickLook Thumbnail</string>
+    <key>NSExtension</key>
+    <dict>
+        <key>NSExtensionPointIdentifier</key>
+        <string>com.apple.quicklook.thumbnail</string>
+        <key>NSExtensionPrincipalClass</key>
+        <string>$(PRODUCT_MODULE_NAME).ThumbnailProvider</string>
+        <key>QLSupportedContentTypes</key>
+        <array>
+            <string>org.matroska.mkv</string>
+            <string>org.webm</string>
+        </array>
+    </dict>
+</dict>
+</plist>

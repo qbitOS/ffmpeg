@@ -1,0 +1,3 @@
+module ArgumentParser {
+    header "/Users/qbit/dev/mkv-quicklook-ffplay/.build/x86_64-apple-macosx/release/ArgumentParser.build/include/ArgumentParser-Swift.h"
+}

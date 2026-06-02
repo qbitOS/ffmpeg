@@ -1,0 +1,19 @@
+.DS_Store
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/
+*.moved-aside
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+*.swp
+*~
+*.log
+tmp/
+*.tmp
+# If you embed a full ffmpeg the binary will be large; you may want to gitignore the bin/ after build
+# Resources/bin/
